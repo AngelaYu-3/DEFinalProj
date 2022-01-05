@@ -65,18 +65,8 @@ void loop() {
       if(digitalRead(i * 2) == signals[i - 1]){
         digitalWrite((i * 2) + 1, HIGH);
         isSwitched[i - 1] = true;
-
-<<<<<<< HEAD
       }
       else digitalWrite((i*2) + 1, LOW);
-=======
-    */
-
-    if(digitalRead(in1) == signals[0]){
-      digitalWrite(out1, HIGH);
-      isSwitched[0] = true;
-      //flipSignal(0);
->>>>>>> 92db6bb8c8088cecacba389631436d6941c4cef9
     }
   
   }

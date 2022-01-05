@@ -78,7 +78,6 @@ void loop() {
 
     */
 
-    //FLIP SIGNAL IS NOT IN RIGHT PLACE!
     if(digitalRead(in1) == signals[0]){
       digitalWrite(out1, HIGH);
       isSwitched[0] = true;

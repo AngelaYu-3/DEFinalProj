@@ -12,7 +12,7 @@ const int in1 = 2, in2 = 4, in3 = 6, in4 = 8, in5 = 10, in6 = 12;
 const int out1 = 3, out2 = 5, out3 = 7, out4 = 9, out5 = 11, out6 = 13;
 
 //clear switch pin
-const int clearLED = A0; 
+const int clearLED = 6; 
 
 //led states
 int signals[7] = {1, 1, 1, 1, 1, 1, 1};
@@ -39,7 +39,10 @@ void clearAll(){
   digitalWrite(out2, 0); 
 
   for(int i = 0; i < 7; i++){
-    if(isSwitched[i]) flipSignal(i);
+    if(isSwitched[i]){
+      flipSignal(i);
+      isSwitched[i] = false;
+    }
   }
 }
 
@@ -50,48 +53,22 @@ void flipSignal(int index){
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
-  //Serial.print("on: ");
-  //Serial.println(on);
-  //Serial.println(analogRead(clearLED));
     
-  if(analogRead(clearLED) == 1023){
+  if(digitalRead(clearLED) == on){
     clearAll();
-    //if(!isFlip) flipSignal();
-    //isFlip = true;
+    if(on == 1) on = 0;
+    else on = 1;
   }
   else{
-    //isFlip = false;
 
-    /*for(int i = 0; i < 7; i++){
-      if(digitalRead('in' + i) == signals[i - 1]){
-        digitalWrite('out' + i, HIGH);
-        isSwitched[i] = true;
-        //flipSignal(i - 1);
+    for(int i = 1; i < 3; i++){
+      if(digitalRead(i * 2) == signals[i - 1]){
+        digitalWrite((i * 2) + 1, HIGH);
+        isSwitched[i - 1] = true;
+
       }
-      else digitalWrite('out' + i, LOW);
+      else digitalWrite((i*2) + 1, LOW);
     }
-    
-      int j = 1;
-      Serial.println('in' + j);
-      Serial.println(digitalRead('in' + j);
-
-    */
-
-    //FLIP SIGNAL IS NOT IN RIGHT PLACE!
-    if(digitalRead(in1) == signals[0]){
-      digitalWrite(out1, HIGH);
-      isSwitched[0] = true;
-      //flipSignal(0);
-    }
-    else digitalWrite(out1, LOW);
   
-    if(digitalRead(in2) == signals[1]){
-      digitalWrite(out2, HIGH);
-      isSwitched[1] = true;
-      //flipSignal(1);
-    }
-    else digitalWrite(out2, LOW);
   }
-  
 }

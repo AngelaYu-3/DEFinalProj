@@ -1,6 +1,6 @@
 /*
  * TODO:
- *   (1) replace uno with nano
+ *   (1) replace uno with nano,
  */
 
 #include <Adafruit_GFX.h>    
@@ -10,6 +10,7 @@
 #include "Turtle.h"
 
 String goal = "WORKOUT";
+int numSwitches = 7;
 
 //led pin inputs
 const int in1 = 2, in2 = 3, in3 = 4, in4 = 5, in5 = 6, in6 = 7, in7 = 8;
@@ -33,9 +34,9 @@ bool isReset1 = false;
 bool isReset2 = false;
 int clearSwitch = 1;
 
-#define TFT_CS 12
-#define TFT_RST 1
-#define TFT_DC 0
+#define TFT_CS A4
+#define TFT_RST A3
+#define TFT_DC A2
 #define red 0x861F
 #define green 0xCFF6
 
@@ -46,11 +47,11 @@ void setup() {
   // put your setup code here, to run once:
   pinMode(in1, INPUT);
   pinMode(in2, INPUT);
-  pinMode(in3, INPUT);
+  /*pinMode(in3, INPUT);
   pinMode(in4, INPUT);
   pinMode(in5, INPUT);
   pinMode(in6, INPUT);
-  pinMode(in7, INPUT);
+  pinMode(in7, INPUT);*/
 
   pinMode(clearLED, INPUT);
 
@@ -105,7 +106,7 @@ void day(int day, uint16_t color){
 }
 
 bool isAllDone(){
-  for(int i = 0; i < 7; i++){
+  for(int i = 0; i < numSwitches; i++){
     if(!isDone[i]) return false;
   }return true;
 }
@@ -144,7 +145,7 @@ void loop() {
     }
     else{
 
-      for(int i = 2; i < 9; i++){
+      for(int i = 2; i < numSwitches + 2; i++){
         if(digitalRead(i) == signals[i - 2]){
           //digitalWrite((i * 2) + 1, HIGH);
           day(i - 2, green);
@@ -164,6 +165,7 @@ void loop() {
   else if(isAllDone()){
     
     if(!isReset1){
+      delay(500);
       tft.fillScreen(ST77XX_BLACK); 
       goalLine(goal);
       t.moveTo(55, 40);
@@ -172,6 +174,7 @@ void loop() {
       isReset1 = true;
       
     }else if (digitalRead(clearLED) == clearSwitch){
+      delay(500);
       resetOgScreen();
       resetIsDone();
       switchClearState();

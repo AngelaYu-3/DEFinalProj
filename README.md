@@ -19,11 +19,11 @@ While I used an Arduino Uno for prototyping, switched to the arduino nano as it 
 
 Used to control "on" "off" functionality of each day and clear / next screen option as seen by the eighth switch.
 
-### [Adafruit 1.44" Color TFT with Micro SD Socket](https://learn.adafruit.com/adafruit-1-44-color-tft-with-micro-sd-socket/pinouts)
+### [Adafruit 1.44" Color TFT with Micro SD Socket](https://learn.adafruit.com/adafruit-1-44-color-tft-with-micro-sd-socket/pinouts){width = 250 height = 250}
 
 LCD display used to showcase daily goal progress
 
-![TFT}(https://cdn-learn.adafruit.com/assets/assets/000/019/533/large1024/adafruit_products_128x128_quarter_ORIG.jpg?1409936627)
+![TFT](https://cdn-learn.adafruit.com/assets/assets/000/019/533/large1024/adafruit_products_128x128_quarter_ORIG.jpg?1409936627)
 
 ## Prototyping
 

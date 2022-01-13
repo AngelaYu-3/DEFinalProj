@@ -12,45 +12,39 @@ int numSwitches = 7;
 //led pin inputs
 const int in1 = 2, in2 = 3, in3 = 4, in4 = 5, in5 = 6, in6 = 7, in7 = 8;
 
-//led pin outputs
+//led pin outputs used for prototyping
 //const int out1 = 3, out2 = 5, out3 = 7, out4 = 9, out5 = 11, out6 = 13;
 
 //clear switch pin
 const int clearLED = 9; 
 
-//led states
+//used to track led states
 int signals[7] = {1, 1, 1, 1, 1, 1, 1};
 bool isSwitched[7] = {false, false, false, false, false, false, false};
 bool isDone[7] = {false, false, false, false, false, false, false};
+
+// x + y coordinates of day of week letter graphics
 int dayX[7] = {10, 55, 100, 10, 55, 100, 55};
 int dayY[7] = {35, 35, 35, 70, 70, 70, 105};
 
 //other variables
 int on = 1;
 bool isReset1 = false;
-bool isReset2 = false;
 int clearSwitch = 1;
 
+// lcd pins + colors
 #define TFT_CS A4
 #define TFT_RST A3
 #define TFT_DC A2
 #define red 0x861F
 #define green 0xCFF6
 
+// instantiating lcd and turtle object
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
 Turtle t = Turtle(&tft);
 
+// setting up screen: MTWTFSS, goal on top, letters in red
 void setup() {
-  // put your setup code here, to run once:
-  pinMode(in1, INPUT);
-  pinMode(in2, INPUT);
-  /*pinMode(in3, INPUT);
-  pinMode(in4, INPUT);
-  pinMode(in5, INPUT);
-  pinMode(in6, INPUT);
-  pinMode(in7, INPUT);*/
-
-  pinMode(clearLED, INPUT);
 
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(ST77XX_BLACK);
@@ -61,12 +55,11 @@ void setup() {
 
   for(int i = 0; i < 7; i++){
     day(i, red);
-  }
-  
+  }  
 }
 
+// resetting signal tracking arrays for a new week
 void clearAll(){
-
   for(int i = 0; i < 7; i++){
     if(isSwitched[i]){
       flipSignal(i);
@@ -75,11 +68,13 @@ void clearAll(){
   }
 }
 
+// flipping signal that needs to be read in for goal to be done
 void flipSignal(int index){
   if(signals[index] == 1) signals[index] = 0;
   else signals[index] = 1;
 }
 
+// used to output goalLine to lcd
 void goalLine(String goal){
   tft.setCursor(3, 4);
   tft.setTextWrap(true);
@@ -87,6 +82,7 @@ void goalLine(String goal){
   tft.print(goal);
 }
 
+// used to print out day letters to lcd
 void day(int day, uint16_t color){
   tft.setCursor(dayX[day], dayY[day]);
   tft.setTextColor(color);
@@ -102,23 +98,27 @@ void day(int day, uint16_t color){
   else if (day == 6) tft.print("S");
 }
 
+// checking to see if all day letters are green
 bool isAllDone(){
   for(int i = 0; i < numSwitches; i++){
     if(!isDone[i]) return false;
   }return true;
 }
 
+// resetting array that tracks if all day letters are green
 void resetIsDone(){
   for(int i = 0; i < 7; i++){
     isDone[i] = false;
   }
 }
 
+// switching state that clearSwitch needs to hit in order for clear to be initiated
 void switchClearState(){
   if(clearSwitch == 0) clearSwitch = 1;
   else clearSwitch = 0;
 }
 
+// going back to starting screen
 void resetOgScreen(){
   tft.initR(INITR_BLACKTAB);
   tft.fillScreen(ST77XX_BLACK);
@@ -130,6 +130,13 @@ void resetOgScreen(){
   }
 }
 
+/*
+  1. Determine if all days are completed or not
+  2. If there are still days incompleted + clear is hit, clear the screen so all days become incomplete
+  3. If there are still days incompleted but clear is NOT hit, check if each switch is reading in its signal that would make the task complete. If the correct signla is read in, change the lcd letter to green and mark that day as done
+  4. If all days are completed, change the lcd to show the star
+  5. If all days are completed, the star screen is, and the clear switch (eight switch) is flipped, reset the lcd and the entire process starts over again
+*/
 void loop() {
   // put your main code here, to run repeatedly:
 

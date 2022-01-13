@@ -13,7 +13,7 @@ This project was my final project for my PLTW Digital Electronics class. I was i
 
 While I used an Arduino Uno for prototyping, switched to the arduino nano as it allowed for a more compact final product and was more cost-effective. 
 
-<img src="https://diyi0t.com/wp-content/uploads/2019/08/Arduino-Nano-Pinout-1.png" width="250" height="350">
+<img src="https://diyi0t.com/wp-content/uploads/2019/08/Arduino-Nano-Pinout-1.png" width="330" height="350">
 
 ### Switches (x8)
 
@@ -23,7 +23,7 @@ Used to control "on" "off" functionality of each day and clear / next screen opt
 
 LCD display used to showcase daily goal progress
 
-<img src="https://cdn-learn.adafruit.com/assets/assets/000/019/533/large1024/adafruit_products_128x128_quarter_ORIG.jpg?1409936627" width="250" height="250">
+<img src="https://cdn-learn.adafruit.com/assets/assets/000/019/533/large1024/adafruit_products_128x128_quarter_ORIG.jpg?1409936627" width="270" height="250">
 
 ## Prototyping
 
@@ -37,7 +37,7 @@ Note that a more detailed explanation of the code can be found by going to DEFin
 
 ### Technical Challenges
 
-The main technical challenge concerned reading inputs from the switches. Depending on how the switch is closed, either 5V or 0V is read in by the arduino microcontroller. However, to make this project more user-friendly, I didn't want the switch state to be fixed (ie: 5V means you met your goal while 0V means you didn't) since it is expected that after clearing the lcd, that all the switches will be in a "goal not met mode" even if the previous state they're in is sending 5V to the microcontroller. Thus, I independently tracked the state of each switch and flipped the signal that needs to be read in for "goal to be met" each time the clear button is hit (see the clearAll() and flipSignal() functions)
+The main technical challenge concerned reading inputs from the switches. Depending on how the switch is closed, either 5V or 0V is read in by the arduino microcontroller. However, to make this project more user-friendly, I didn't want the switch state to be fixed (ie: 5V means you met your goal while 0V means you didn't) since it is expected that after clearing the lcd, that all the switches will be in a "goal not met mode" even if the previous state they're in is sending 5V to the microcontroller. Thus, I independently tracked the state of each switch using arrays and flipped the signal that needs to be read in for "goal to be met" each time the clear button is hit (see the clearAll() and flipSignal() functions)
 
 Another technical challenge that required some debugging was implementing the Turtle library. I ended up simply having to edit some of the source code as the microcontroller used in the original source code was for a different arduino microcontroller. 
 

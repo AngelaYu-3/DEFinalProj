@@ -5,7 +5,7 @@
 
 This project was a final project in my high school PLTW Digital Electronics class. I was inspired by [Simone Giertz's Everyday Calendar](https://www.youtube.com/watch?v=-lpvy-xkSNA) as well as the goal to work out daily consistently. (Especially going into college, this goal seems to be more pertinent)
 
-![finalProduct](finalProduct.gif)
+![finalProduct](finalProd.gif)
 
 ## Main Parts
 

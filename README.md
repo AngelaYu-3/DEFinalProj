@@ -23,7 +23,7 @@ Used to control "on" "off" functionality of each day and clear / next screen opt
 
 LCD display used to showcase daily goal progress
 
-![TFT](https://cdn-learn.adafruit.com/assets/assets/000/019/533/large1024/adafruit_products_128x128_quarter_ORIG.jpg?1409936627)
+<img src="https://cdn-learn.adafruit.com/assets/assets/000/019/533/large1024/adafruit_products_128x128_quarter_ORIG.jpg?1409936627" width="250" height="250">
 
 ## Prototyping
 

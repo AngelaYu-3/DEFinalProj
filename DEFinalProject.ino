@@ -57,7 +57,7 @@ void setup() {
   }  
 }
 
-// used to clear any green letters to an all red week (going back to starting screen)
+// resetting signal tracking arrays for a new week
 void clearAll(){
   for(int i = 0; i < 7; i++){
     if(isSwitched[i]){

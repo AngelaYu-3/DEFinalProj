@@ -129,7 +129,13 @@ void resetOgScreen(){
   }
 }
 
-// using methods above: see readme file for more details
+/*
+  1. Determine if all days are completed or not
+  2. If there are still days incompleted + clear is hit, clear the screen so all days become incomplete
+  3. If there are still days incompleted but clear is NOT hit, check if each switch is reading in its signal that would make the task complete. If the correct signla is read in, change the lcd letter to green and mark that day as done
+  4. If all days are completed, change the lcd to show the star
+  5. If all days are completed, the star screen is, and the clear switch (eight switch) is flipped, reset the lcd and the entire process starts over again
+*/
 void loop() {
   // put your main code here, to run repeatedly:
 

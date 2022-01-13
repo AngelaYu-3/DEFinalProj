@@ -33,7 +33,21 @@ To get the basic switch and clear switch logic down, I first prototyped just the
 
 ## Code Implementation
 
-Note that a more detailed explanation of the code can be found by going to DEFinalProject.ino as the code is commented. 
+Note that a more detailed explanation of the code can be found by going to DEFinalProject.ino as the code is commented.
+
+#### setup()
+
+The initial setup() is used to print the goal line and days in red ("not done state") to the lcd.
+
+#### loop()
+
+The main loop() function reads inputs from the switches and coordinates with the lcd through the states listed below:
+
+ 1. Determine if all days are completed or not
+ 2. If there are still days incompleted + clear is hit, clear the screen so all days become incomplete
+ 3. If there are still days incompleted but clear is NOT hit, check if each switch is reading in its signal that would make the task complete. If the correct signla is read in, change the lcd letter to green and mark that day as done
+ 4. If all days are completed, change the lcd to show the star
+ 5. If all days are completed, the star screen is, and the clear switch (eight switch) is flipped, reset the lcd and the entire process starts over again 
 
 ### Technical Challenges
 

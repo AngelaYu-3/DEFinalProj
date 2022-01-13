@@ -9,19 +9,21 @@ This project was my final project for my PLTW Digital Electronics class. I was i
 
 ## Main Parts
 
-### Arduino Nano
+### [Arduino Nano](https://diyi0t.com/arduino-nano-tutorial/)
 
 While I used an Arduino Uno for prototyping, switched to the arduino nano as it allowed for a more compact final product and was more cost-effective. 
 
-![Arduino Nano](https://cdn.shopify.com/s/files/1/0438/4735/2471/products/A000005_03.front_643x483.jpg?v=1628695103)
+![Arduino Nano](https://diyi0t.com/wp-content/uploads/2019/08/Arduino-Nano-Pinout-1.png)
 
 ### Switches (x8)
 
 Used to control "on" "off" functionality of each day and clear / next screen option as seen by the eighth switch.
 
-### Adafruit 1.44" Color TFT with Micro SD Socket
+### [Adafruit 1.44" Color TFT with Micro SD Socket](https://learn.adafruit.com/adafruit-1-44-color-tft-with-micro-sd-socket/pinouts)
 
 LCD display used to showcase daily goal progress
+
+![TFT}(https://cdn-learn.adafruit.com/assets/assets/000/019/533/large1024/adafruit_products_128x128_quarter_ORIG.jpg?1409936627)
 
 ## Prototyping
 

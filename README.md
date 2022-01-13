@@ -29,7 +29,7 @@ LCD display used to showcase daily goal progress
 
 To get the basic switch and clear switch logic down, I first prototyped just the switch functionality using LEDs as demonstrated below:
 
-[insert led gif here]
+![prototype](prototype.gif)
 
 ## Code Implementation
 

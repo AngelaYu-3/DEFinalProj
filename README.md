@@ -49,11 +49,11 @@ The main loop() function reads inputs from the switches and coordinates with the
  4. If all days are completed, change the lcd to show the star
  5. If all days are completed, the star screen is, and the clear switch (eight switch) is flipped, reset the lcd and the entire process starts over again 
 
-### Technical Challenges
+### Main technical Challenges
 
-The main technical challenge concerned reading inputs from the switches. Depending on how the switch is closed, either 5V or 0V is read in by the arduino microcontroller. However, to make this project more user-friendly, I didn't want the switch state to be fixed (ie: 5V means you met your goal while 0V means you didn't) since it is expected that after clearing the lcd, that all the switches will be in a "goal not met mode" even if the previous state they're in is sending 5V to the microcontroller. Thus, I independently tracked the state of each switch using arrays and flipped the signal that needs to be read in for "goal to be met" each time the clear button is hit (see the clearAll() and flipSignal() functions)
+Reading inputs from the switches: depending on how the switch is closed, either 5V or 0V is read in by the arduino microcontroller. However, to make this project more user-friendly, I didn't want the switch state to be fixed (ie: 5V means you met your goal while 0V means you didn't) since it is expected that after clearing the lcd, that all the switches will be in a "goal not met mode" even if the previous state they're in is sending 5V to the microcontroller. Thus, I independently tracked the state of each switch using arrays and flipped the signal that needs to be read in for "goal to be met" each time the clear button is hit (see the clearAll() and flipSignal() functions)
 
-Another technical challenge that required some debugging was implementing the Turtle library. I ended up simply having to edit some of the source code as the microcontroller used in the original source code was for a different arduino microcontroller. 
+Implementing the Turtle library: I ended up simply having to edit some of the source code as the microcontroller used in the original source code was for a different arduino microcontroller. 
 
 ## Attributions:
 
